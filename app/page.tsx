@@ -325,7 +325,7 @@ export default function Home() {
   </h1>
 
   {/* buttons row */}
-  <div className="mt-10 w-full grid grid-cols-[1fr_auto_1fr] items-center">
+  <div className="mt-10 w-full max-w-[900px] flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
   {/* Resume (moves left) */}
   <a
     href="/GG/GG.Resume.pdf"
