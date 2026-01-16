@@ -287,7 +287,7 @@ function ProjectsSection() {
 export default function Home() {
   return (
     <main className="min-h-screen text-white pt-16">
-      <ScrollVideoBackground src="/GG/bg.mp4" 
+      <ScrollVideoBackground src="/GG/bg_mobile.mp4" 
       poster="/GG/hero.jpg"
       //scrollBoost={0.008}
       //friction={0.9}
