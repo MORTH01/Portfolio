@@ -780,7 +780,7 @@ transition"
       </section>
 
       {/* Footer */}
-      <footer className="bg-black border-t border-gray-900 py-8">
+      <footer className="bg-transparent border-t border-gray-900 py-8">
         <div className="w-full px-4 sm:px-6 lg:px-10">
           <div className="flex justify-between items-center">
             <p className="text-gray-500 text-sm">© 2026 GG</p>
