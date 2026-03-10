@@ -228,6 +228,7 @@ function ProjectsSection() {
       link: "https://github.com/MORTH01/SmartObject-Detector.git",
     },
     {
+<<<<<<< HEAD
       title: "Vac-Vectoor Website",
       desc: "A Dynamic Responsive Website representing and displaying achivements of VAC_VACTOOR Hyperloop Team",
       img: "/GG/vac.jpg",
@@ -236,6 +237,8 @@ function ProjectsSection() {
       link: "https://github.com/MORTH01/Vac-vectoor-Hyperloop-Site.git",
     },
     {
+=======
+>>>>>>> e5f8f7da9c6bc9bb3ef679601ea055802f67286d
       title: "Speech-To-Image",
       desc: "A python based application that converts speech to AI-generated images.",
       img: "/GG/speechai.jpg",
@@ -244,6 +247,7 @@ function ProjectsSection() {
       link: "https://github.com/MORTH01/Speech-To-Image-.git",
     },
     {
+<<<<<<< HEAD
       title: "Book Store Appication",
       desc: "A python based application that helps manage book store inventory.",
       img: "/GG/book.jpg",
@@ -252,6 +256,8 @@ function ProjectsSection() {
       link: "https://github.com/MORTH01/Book-Store-Application.git",
     },
     {
+=======
+>>>>>>> e5f8f7da9c6bc9bb3ef679601ea055802f67286d
       title: "FDH - Company Website",
       desc: "Worked on the official website for Funnkar Design House.",
       img: "/GG/fdh1.jpg",
@@ -265,7 +271,11 @@ function ProjectsSection() {
       img: "/GG/gbc1.jpg",
       bullets: ["Clean UI system", "Mobile-first design", "Brand-consistent visuals"],
       tech: ["Figma", "UI Design", "Web"],
+<<<<<<< HEAD
       link: "https://github.com/MORTH01/cross-platform-mobile-canteen-POS-application.git",
+=======
+      link: "#",
+>>>>>>> e5f8f7da9c6bc9bb3ef679601ea055802f67286d
     }
     
   ];
@@ -303,7 +313,15 @@ function ProjectsSection() {
 export default function Home() {
   return (
     <main className="min-h-screen text-white pt-16">
+<<<<<<< HEAD
       <ScrollVideoBackground src="/GG/bg_mobile.mp4"  
+=======
+      <ScrollVideoBackground src="/GG/bg_mobile.mp4" 
+      poster="/GG/hero.jpg"
+      //scrollBoost={0.008}
+      //friction={0.9}
+      //basePlaybackRate={1} 
+>>>>>>> e5f8f7da9c6bc9bb3ef679601ea055802f67286d
       />
       {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden">
@@ -340,7 +358,11 @@ export default function Home() {
   <div className="mt-10 w-full max-w-[900px] flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
   {/* Resume (moves left) */}
   <a
+<<<<<<< HEAD
     href="/GG/Gouresh.pdf"
+=======
+    href="/GG/GG.Resume.pdf"
+>>>>>>> e5f8f7da9c6bc9bb3ef679601ea055802f67286d
     target="_blank"
     rel="noreferrer"
     className="justify-self-start relative left-[400px] w-[220px] text-center px-7 py-3 rounded-full font-medium
@@ -556,10 +578,17 @@ transition"
             <div className="bg-black/20 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
               <div className="flex justify-between items-start mb-4">
                 <div>
+<<<<<<< HEAD
                   <h3 className="text-2xl font-bold text-white">Software Engineer - Python Full Stack</h3>
                   <p className="text-white/90 text-lg">Funnkar Design House</p>
                 </div>
                 <span className="bg-white text-[#FF5722] px-4 py-2 rounded-full text-sm font-medium">Mar 2025 - Jan 2026</span>
+=======
+                  <h3 className="text-2xl font-bold text-white">Software Developer Intern</h3>
+                  <p className="text-white/90 text-lg">Funnkar Design House</p>
+                </div>
+                <span className="bg-white text-[#FF5722] px-4 py-2 rounded-full text-sm font-medium">Aug 2025 - Jan 2026</span>
+>>>>>>> e5f8f7da9c6bc9bb3ef679601ea055802f67286d
               </div>
               <p className="text-white/80 leading-relaxed">
                 Developed and maintained software applications using Python and Java, focusing on clean architecture, modular design,   
@@ -571,7 +600,11 @@ transition"
             <div className="bg-black/20 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
               <div className="flex justify-between items-start mb-4">
                 <div>
+<<<<<<< HEAD
                   <h3 className="text-2xl font-bold text-white">Software Engineer - Full Stack </h3>
+=======
+                  <h3 className="text-2xl font-bold text-white">Freelance Software Developer </h3>
+>>>>>>> e5f8f7da9c6bc9bb3ef679601ea055802f67286d
                   <p className="text-white/90 text-lg">Independent Projects</p>
                 </div>
                 <span className="bg-white text-[#FF5722] px-4 py-2 rounded-full text-sm font-medium">Mar 2024 - Apr 2025</span>
