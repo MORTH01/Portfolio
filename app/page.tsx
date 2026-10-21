@@ -24,59 +24,50 @@ function ProjectFlipCard({
   href={link}
   target="_blank"
   rel="noreferrer"
-  className="[perspective:1200px] w-full max-w-[420px] block"
+  className="relative block w-full max-w-[420px] h-full hover:z-10"
 >
 
+      {/* Details always visible; on hover the card grows slightly and turns red */}
       <div
         className="
-          relative h-[300px] w-full cursor-pointer
-    transition-transform duration-700
-    [transform-style:preserve-3d]
-    hover:[transform:rotateY(180deg)]
-  "
+          group relative h-full min-h-[300px] w-full cursor-pointer rounded-2xl
+          bg-black/70 backdrop-blur-md border border-white/10
+          p-6
+          transition-all duration-300 ease-out
+          hover:scale-[1.05] hover:border-red-400/60
+          hover:shadow-[0_18px_50px_rgba(220,38,38,0.45)]
+          overflow-hidden isolate
+        "
       >
-        {/* FRONT: image only */}
-        <div className="absolute inset-0 overflow-hidden rounded-2xl [backface-visibility:hidden]">
-          <Image src={img} alt={title} fill className="object-cover" />
-          {/* optional: tiny dark fade for depth */}
-          <div className="absolute inset-0 bg-black/10" />
-        </div>
+        {/* Red gradient that fades in on hover */}
+        <span
+          aria-hidden
+          className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-[#FF5A4E] via-[#E0262B] to-[#7A0A12] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        />
+        <h3 className="text-xl font-bold text-white">{title}</h3>
+        <p className="text-sm text-gray-300 mt-2 leading-relaxed transition-colors group-hover:text-white">{desc}</p>
 
-        {/* BACK: details */}
-        <div
-          className="
-            absolute inset-0 rounded-2xl
-            bg-black/70 backdrop-blur-md border border-white/10
-            p-6
-            [transform:rotateY(180deg)]
-            [backface-visibility:hidden]
-          "
-        >
-          <h3 className="text-xl font-bold text-white">{title}</h3>
-          <p className="text-sm text-gray-300 mt-2 leading-relaxed">{desc}</p>
+        <ul className="mt-4 space-y-2 text-sm text-gray-300 transition-colors group-hover:text-white/90">
+          {bullets.map((b) => (
+            <li key={b} className="flex gap-2">
+              <span className="text-white/60">•</span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
 
-          <ul className="mt-4 space-y-2 text-sm text-gray-300">
-            {bullets.map((b) => (
-              <li key={b} className="flex gap-2">
-                <span className="text-white/60">•</span>
-                <span>{b}</span>
-              </li>
+        {tech?.length ? (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {tech.map((t) => (
+              <span
+                key={t}
+                className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 text-white/80 transition-colors group-hover:bg-white/20 group-hover:border-white/30 group-hover:text-white"
+              >
+                {t}
+              </span>
             ))}
-          </ul>
-
-          {tech?.length ? (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {tech.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 text-white/80"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
       </div>
     </a>
   );
@@ -204,6 +195,14 @@ function ProjectsSection() {
 
   const projects = [
     {
+      title: "Orbit",
+      desc: "A minimal task manager, focus timer and study tracker for Android and macOS.",
+      img: "/GG/orbit.jpg",
+      bullets: ["Planner + focus timer", "Cloud sync & sign-in", "AI assistant (Orbit Pro)"],
+      tech: ["Tauri", "Rust", "JavaScript", "Supabase"],
+      link: "/orbit",
+    },
+    {
       title: "Voice & Gesture Assisted RPA System",
       desc: "A custom-built assistant designed to feel conversational and fast.",
       img: "/GG/asmodeus.jpg",
@@ -303,7 +302,7 @@ function ProjectsSection() {
 export default function Home() {
   return (
     <main className="min-h-screen text-white pt-16">
-      <ScrollVideoBackground src="/GG/bg_mobile.mp4"  
+      <ScrollVideoBackground src="/GG/bg_web.mp4" poster="/GG/bg_poster.jpg"  
       />
       {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden">

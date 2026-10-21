@@ -1,2 +1,2 @@
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-public/GG/bg.mp4 filter=lfs diff=lfs merge=lfs -text
+# Large videos are no longer stored with Git LFS: the background video is a small web-optimised file
+# (public/GG/bg_web.mp4) committed directly, so GitHub and Vercel serve the real video.
