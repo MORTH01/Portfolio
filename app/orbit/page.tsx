@@ -68,22 +68,20 @@ export default function OrbitPage() {
         </div>
       </section>
 
-      {/* Pro */}
+      {/* Pro — coming soon. When the subscription launches, restore the pricing chips (₹99 / month, ₹349 / year, 7-day free trial). */}
       <section className="rounded-3xl border border-white/10 bg-[#141414] p-8 sm:p-10">
-        <h2 className="text-3xl font-bold">Orbit Pro</h2>
-        <p className="mt-3 text-gray-300 leading-relaxed max-w-[640px]">
-          Everything in Orbit is free. Orbit Pro unlocks the built-in AI assistant, AI spreadsheet import and AI
-          reflections, and works on every device you sign in to.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3 text-sm">
-          <span className="px-4 py-2 rounded-full bg-white/10 border border-white/10">₹99 / month</span>
-          <span className="px-4 py-2 rounded-full bg-white/10 border border-white/10">₹349 / year</span>
-          <span className="px-4 py-2 rounded-full bg-white/10 border border-white/10">7-day free trial</span>
+        <div className="flex flex-wrap items-center gap-3">
+          <h2 className="text-3xl font-bold">Orbit Pro</h2>
+          <span className="px-3 py-1 rounded-full text-xs tracking-[0.2em] uppercase bg-white/10 border border-white/15 text-white/80">Coming soon</span>
         </div>
-        <p className="mt-5 text-xs text-white/50 leading-relaxed">
-          Billed through Google Play; prices outside India are set by Google Play in local currency. Cancel any time in
-          Google Play → Payments &amp; subscriptions. Prefer not to subscribe? Add your own free Gemini API key in
-          Settings and the AI features stay free.
+        <p className="mt-3 text-gray-300 leading-relaxed max-w-[640px]">
+          Everything in Orbit is free. Orbit Pro will build the AI assistant, AI spreadsheet import and AI reflections right
+          into the app — no key needed — and work on every device you sign in to.
+        </p>
+        <p className="mt-5 text-sm text-white/60 leading-relaxed max-w-[640px]">
+          Until then, the AI features are free with your own Google Gemini API key: create one at
+          {" "}<a href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer" className="text-white/90 underline underline-offset-4">aistudio.google.com/apikey</a>{" "}
+          and paste it in Settings → AI Assistant. It stays on your device.
         </p>
       </section>
 
