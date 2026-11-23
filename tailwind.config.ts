@@ -19,7 +19,23 @@ const config: Config = {
           card: '#1A1A1A',
           'card-light': '#2A2A2A',
           text: '#CCCCCC',
-        }
+        },
+        // Editorial palette for the /covault launch page (warm textured canvas, white cards, obsidian ink).
+        vault: {
+          canvas: '#FAF9F6',
+          card: '#FFFFFF',
+          ink: '#0D0D0D',
+          dark: '#111111',
+          accent: '#FF6B00',
+          line: 'rgba(13,13,13,0.08)',
+          'line-dark': 'rgba(247,247,245,0.16)',
+        },
+      },
+      boxShadow: {
+        soft: '0 8px 30px rgba(0,0,0,0.03)',
+      },
+      transitionTimingFunction: {
+        kinetic: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       fontFamily: {
         sans: ['var(--font-sans)'],

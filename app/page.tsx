@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import ScrollVideoBackground from "./ScrollVideoBackground";
 import { useMemo, useState } from "react";
 
@@ -19,56 +20,65 @@ function ProjectFlipCard({
   tech?: string[];
   link: string;
 }) {
-  return (
-    <a
-  href={link}
-  target="_blank"
-  rel="noreferrer"
-  className="relative block w-full max-w-[420px] h-full hover:z-10"
->
+  const cardClassName = "relative block w-full max-w-[420px] h-full hover:z-10";
 
-      {/* Details always visible; on hover the card grows slightly and turns red */}
-      <div
-        className="
-          group relative h-full min-h-[300px] w-full cursor-pointer rounded-2xl
-          bg-black/70 backdrop-blur-md border border-white/10
-          p-6
-          transition-all duration-300 ease-out
-          hover:scale-[1.05] hover:border-red-400/60
-          hover:shadow-[0_18px_50px_rgba(220,38,38,0.45)]
-          overflow-hidden isolate
-        "
-      >
-        {/* Red gradient that fades in on hover */}
-        <span
-          aria-hidden
-          className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-[#FF5A4E] via-[#E0262B] to-[#7A0A12] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        />
-        <h3 className="text-xl font-bold text-white">{title}</h3>
-        <p className="text-sm text-gray-300 mt-2 leading-relaxed transition-colors group-hover:text-white">{desc}</p>
+  // Details always visible; on hover the card grows slightly and turns red
+  const card = (
+    <div
+      className="
+        group relative h-full min-h-[300px] w-full cursor-pointer rounded-2xl
+        bg-black/70 backdrop-blur-md border border-white/10
+        p-6
+        transition-all duration-300 ease-out
+        hover:scale-[1.05] hover:border-red-400/60
+        hover:shadow-[0_18px_50px_rgba(220,38,38,0.45)]
+        overflow-hidden isolate
+      "
+    >
+      {/* Red gradient that fades in on hover */}
+      <span
+        aria-hidden
+        className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-[#FF5A4E] via-[#E0262B] to-[#7A0A12] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
+      <h3 className="text-xl font-bold text-white">{title}</h3>
+      <p className="text-sm text-gray-300 mt-2 leading-relaxed transition-colors group-hover:text-white">{desc}</p>
 
-        <ul className="mt-4 space-y-2 text-sm text-gray-300 transition-colors group-hover:text-white/90">
-          {bullets.map((b) => (
-            <li key={b} className="flex gap-2">
-              <span className="text-white/60">•</span>
-              <span>{b}</span>
-            </li>
+      <ul className="mt-4 space-y-2 text-sm text-gray-300 transition-colors group-hover:text-white/90">
+        {bullets.map((b) => (
+          <li key={b} className="flex gap-2">
+            <span className="text-white/60">•</span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      {tech?.length ? (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {tech.map((t) => (
+            <span
+              key={t}
+              className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 text-white/80 transition-colors group-hover:bg-white/20 group-hover:border-white/30 group-hover:text-white"
+            >
+              {t}
+            </span>
           ))}
-        </ul>
+        </div>
+      ) : null}
+    </div>
+  );
 
-        {tech?.length ? (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tech.map((t) => (
-              <span
-                key={t}
-                className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 text-white/80 transition-colors group-hover:bg-white/20 group-hover:border-white/30 group-hover:text-white"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        ) : null}
-      </div>
+  // Routes inside this site (/orbit, /covault) navigate client-side in the same tab;
+  // external repos and live sites still open in a new tab.
+  if (link.startsWith("/")) {
+    return (
+      <Link href={link} className={cardClassName}>
+        {card}
+      </Link>
+    );
+  }
+  return (
+    <a href={link} target="_blank" rel="noreferrer" className={cardClassName}>
+      {card}
     </a>
   );
 }
@@ -216,7 +226,7 @@ function ProjectsSection() {
       img: "/GG/covault.jpg",
       bullets: ["Cloud-Native","Scalable","Searchable","Role-Based"],
       tech: ["Web Tech", "Cloud Architecture"],
-      link: "#",
+      link: "/covault",
     },
     {
       title: "Smart Object Detector",

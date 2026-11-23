@@ -1,0 +1,136 @@
+/* Styles for the /covault route tree. Every selector is prefixed cv- so nothing
+   here reaches the portfolio page, which keeps its own dark theme in globals.css. */
+
+.cv-root {
+  position: relative;
+  isolation: isolate;
+  color: #0d0d0d;
+  background-color: #faf9f6;
+  animation: cv-arrive 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cv-root ::selection {
+  background: #0d0d0d;
+  color: #f7f7f5;
+}
+
+/* Anchored sections stop short of the floating header. */
+.cv-root section[id],
+.cv-root #simulator {
+  scroll-margin-top: 96px;
+}
+
+@keyframes cv-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scroll-triggered reveal; Reveal.tsx adds .is-in once the element enters the viewport. */
+.cv-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 800ms cubic-bezier(0.16, 1, 0.3, 1) var(--cv-delay, 0ms),
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1) var(--cv-delay, 0ms);
+}
+
+.cv-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Infinite marquee. The track holds the list twice, so -50% lands exactly on the seam.
+   Perspectives.tsx eases playbackRate instead of toggling play-state, which is why
+   there is no :hover rule here. */
+.cv-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.cv-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: cv-marquee var(--cv-duration, 60s) linear infinite;
+}
+
+.cv-track[data-direction="reverse"] {
+  animation-direction: reverse;
+}
+
+@keyframes cv-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Height-animated disclosure used by the module rows and the mobile menu. */
+.cv-expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cv-expand > * {
+  overflow: hidden;
+}
+
+.cv-expand.is-open {
+  grid-template-rows: 1fr;
+}
+
+/* Placeholder frames size their slot label to the frame, not the viewport, so a narrow
+   frame drops the "Figma slot:" prefix instead of truncating the slot name. */
+.cv-frame {
+  container-type: inline-size;
+}
+
+@container (max-width: 280px) {
+  .cv-slot-prefix {
+    display: none;
+  }
+}
+
+@container (max-width: 180px) {
+  .cv-frame figcaption {
+    font-size: 8px;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* Dot grid behind the manifesto card, echoing the reference template's pattern tile. */
+.cv-dots {
+  background-image: radial-gradient(rgba(13, 13, 13, 0.18) 1.2px, transparent 1.3px);
+  background-size: 18px 18px;
+}
+
+/* Pipeline nodes light up in sequence while the architecture section is in view. */
+.cv-pulse {
+  animation: cv-pulse 4.8s ease-in-out infinite;
+  animation-delay: var(--cv-delay, 0ms);
+}
+
+@keyframes cv-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); border-color: rgba(247, 247, 245, 0.16); }
+  12% { box-shadow: 0 0 0 6px rgba(255, 107, 0, 0.18); border-color: #ff6b00; }
+  24% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); border-color: rgba(247, 247, 245, 0.16); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-root,
+  .cv-reveal,
+  .cv-expand,
+  .cv-pulse {
+    animation: none;
+    transition: none;
+  }
+
+  .cv-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cv-track {
+    animation: none;
+  }
+}
