@@ -64,7 +64,7 @@ export default function Modules() {
               <li
                 key={m.index}
                 onMouseEnter={() => canHover && setActive(i)}
-                className={`border-b border-vault-line transition-colors duration-500 ease-kinetic ${
+                className={`border-b border-vault-line px-8 transition-colors duration-500 ease-kinetic md:px-12 lg:px-16 ${
                   open ? "bg-vault-ink text-vault-canvas" : "text-vault-ink"
                 }`}
               >
@@ -72,7 +72,7 @@ export default function Modules() {
                   type="button"
                   onClick={() => toggle(i)}
                   aria-expanded={open}
-                  className="grid w-full grid-cols-[2.5rem_1fr_auto] items-center gap-4 py-6 text-left sm:grid-cols-[4rem_1fr_minmax(0,22rem)_2rem] sm:gap-6 sm:py-7"
+                  className="grid w-full grid-cols-[2.5rem_1fr_auto] items-center gap-6 py-6 text-left sm:grid-cols-[3rem_1fr_minmax(0,22rem)_2rem] sm:py-7 md:gap-10"
                 >
                   <span className={`font-mono text-xs ${open ? "text-vault-canvas/60" : "text-vault-ink/45"}`}>{m.index}</span>
                   <span className="font-heading text-3xl font-medium leading-none tracking-[-0.04em] sm:text-5xl lg:text-6xl">
@@ -98,9 +98,10 @@ export default function Modules() {
 
                 <div className={`cv-expand ${open ? "is-open" : ""}`}>
                   <div>
-                    <div className="grid gap-6 pb-10 sm:grid-cols-[4rem_1fr]">
+                    {/* Same first column and gap as the header, so the panel lines up under the title. */}
+                    <div className="grid gap-6 pb-10 sm:grid-cols-[3rem_1fr] md:gap-10">
                       <span className="hidden sm:block" />
-                      <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+                      <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
                         <div className="lg:col-span-5">
                           <p className="max-w-[440px] text-base leading-relaxed text-vault-canvas/80">{m.text}</p>
                           <Bracket className="mt-8 text-vault-canvas/50">Capabilities</Bracket>
@@ -120,7 +121,7 @@ export default function Modules() {
                             tone="dark"
                             sizes="(min-width: 1024px) 680px, 100vw"
                           />
-                          <div className="mt-3 flex items-baseline gap-3 font-mono text-[11px] text-vault-canvas/50">
+                          <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono text-[11px] text-vault-canvas/50">
                             <Bracket className="text-vault-canvas/45">{SCREENS[m.screen].label}</Bracket>
                             <span>{m.title} screen</span>
                           </div>
